@@ -22,7 +22,7 @@
           </a>
           <ul class="dropdown-menu">
             <li v-for="o in oficios" :key="o">
-                <router-link class="dropdown-item" to="/">{{o}}</router-link>
+                <router-link class="dropdown-item" :to="`/empleadosoficio/${o}`">{{o}}</router-link>
             </li>
           </ul>
         </li>
