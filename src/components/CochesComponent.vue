@@ -14,12 +14,8 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    // import Global from './Global';
-    //Importar Global.js
-    //Si necesito varaibles que sea declaradas para todos los metodo que tengamos
-    //en el compoenent lo haremos aqui
-    let URLApiCoches = "https://apicochespaco.azurewebsites.net/";
+    import ServiceCoches from '../services/ServiceCoches'
+    const service = new ServiceCoches();
     export default{
         name:"CochesComponent",
         data(){
@@ -28,17 +24,12 @@
             }
         },
         methods:{
-            loadCoches(){
-                let request = "webresources/coches";
-                //Las variables por encima de 'export default' no utilizan 'this'
-                let url = URLApiCoches + request;
-                axios.get(url).then(response=>{
-                    this.coches = response.data;
-                })
-            }
+
         },
         mounted(){
-            this.loadCoches();
+            service.getCoches().then(result =>{
+                this.coches = result;
+            })
         }
     }
 </script>
