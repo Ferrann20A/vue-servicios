@@ -40,4 +40,17 @@ export default class ServiceEmpleados{
             return empleados;
         })
     }
+
+    getOficios(){
+        return new Promise(function(resolve){
+            let request = "api/empleados/oficios";
+            let url = Global.URL_ApiEmpleados + request;
+            let oficios = [];
+            axios.get(url).then(response=>{
+                oficios = response.data;
+                resolve(oficios);
+            })
+            return oficios;
+        })
+    }
 }
