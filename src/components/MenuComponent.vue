@@ -18,12 +18,12 @@
         </li>
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Oficios
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li v-for="o in oficios" :key="o">
+                <router-link class="dropdown-item" to="/">{{o}}</router-link>
+            </li>
           </ul>
         </li>
       </ul>
@@ -33,8 +33,22 @@
 </template>
 
 <script>
+    import Global from './../Global'
+    import axios from 'axios';
     export default{
-        name:"MenuComponent"
+        name:"MenuComponent",
+        data(){
+            return{
+                oficios:[]
+            }
+        },
+        mounted(){
+            let request = "api/empleados/oficios"
+            let url = Global.URL_ApiEmpleados + request;
+            axios.get(url).then(response=>{
+                this.oficios = response.data;
+            })
+        }
     }
 </script>
 
