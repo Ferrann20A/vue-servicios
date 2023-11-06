@@ -21,8 +21,8 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    import Global from './../Global'
+    import ServiceEmpleados from './../services/ServiceEmpleados';
+    const service = new ServiceEmpleados();
     export default{
         watch:{
             '$route.params.oficio'(nextVal,oldVal){
@@ -40,10 +40,8 @@
         methods:{
             loadEmpleados(){
                 let oficio = this.$route.params.oficio;
-                let request = `api/empleados/empleadosoficio/${oficio}`;
-                let url = Global.URL_ApiEmpleados + request;
-                axios.get(url).then(response=>{
-                    this.empleados = response.data
+                service.findEmpleadosByOficio(oficio).then(result=>{
+                    this.empleados = result;
                 })
             }
         },

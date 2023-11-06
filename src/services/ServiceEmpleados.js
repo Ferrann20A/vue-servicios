@@ -14,4 +14,30 @@ export default class ServiceEmpleados{
             return empleados;
         })
     }
+
+    findEmpleado(idEmpleado){
+        return new Promise(function(resolve){
+            let request = `api/empleados/${idEmpleado}`;
+            let url = Global.URL_ApiEmpleados + request;
+            let empleado = null;
+            axios.get(url).then(response=>{
+                empleado = response.data;
+                resolve(empleado);
+            })
+            return empleado;
+        })
+    }
+
+    findEmpleadosByOficio(oficio){
+        return new Promise(function(resolve){
+            let request = `api/empleados/empleadosoficio/${oficio}`;
+            let url = Global.URL_ApiEmpleados + request;
+            let empleados = [];
+            axios.get(url).then(response=>{
+                empleados = response.data;
+                resolve(empleados)
+            })
+            return empleados;
+        })
+    }
 }
