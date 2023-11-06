@@ -15,6 +15,7 @@
 
 <script>
     import axios from 'axios';
+    // import Global from './Global';
     //Importar Global.js
     //Si necesito varaibles que sea declaradas para todos los metodo que tengamos
     //en el compoenent lo haremos aqui
