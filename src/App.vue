@@ -1,15 +1,15 @@
 <template>
-  <EmpleadosDetalle/>
+  <MenuComponent/>
+  <router-view></router-view>
 </template>
 
 <script>
-// import CochesComponent from './components/CochesComponent.vue'
-import EmpleadosDetalle from './components/EmpleadosDetalle.vue'
+import MenuComponent from './components/MenuComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    EmpleadosDetalle
+    MenuComponent
   }
 }
 </script>
@@ -21,6 +21,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
